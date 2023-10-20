@@ -1,5 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.ProductCard;
 
+import com.PortfolioProject.ERPFullstackApp.ProductCard.Entities.ProductCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,10 @@ public class ProductCardControler {
     public void addProductCard(@RequestBody ProductCard productCard){
         productCardService.addProductCard(productCard);
     }
+
+    @DeleteMapping(path = "{deleteProductCard}")
+    public void deleteProductCard(@PathVariable("deleteProductCard") Long id){ productCardService.deleteProductCard(id);}
+
 
 
 }

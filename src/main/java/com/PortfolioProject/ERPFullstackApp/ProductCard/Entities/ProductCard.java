@@ -1,10 +1,14 @@
-package com.PortfolioProject.ERPFullstackApp.ProductCard;
+package com.PortfolioProject.ERPFullstackApp.ProductCard.Entities;
 
+import com.PortfolioProject.ERPFullstackApp.ProductCard.ProductPrices.ListOfPrices;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import java.time.Instant;
 import java.time.LocalDateTime;
+
 
 
 @Entity
@@ -30,6 +34,9 @@ public class ProductCard {
     private String ean;
     private Boolean active;
     private String unitOfMeasurement;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column
+    private ListOfPrices listOfPrices;
     @CreatedDate
     @Column(updatable = false)
     private Instant createdDate;
@@ -95,6 +102,10 @@ public class ProductCard {
     public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
     }
+
+    public ListOfPrices getListOfPrices() { return listOfPrices; }
+
+    public void setListOfPrices(ListOfPrices listOfPrices) { this.listOfPrices = listOfPrices; }
 
     public Instant getCreatedDate() {
         return createdDate;
