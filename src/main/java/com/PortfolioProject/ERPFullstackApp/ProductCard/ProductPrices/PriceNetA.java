@@ -48,7 +48,7 @@ public class PriceNetA extends PriceAbstract implements PriceInterface {
 
     @Override
     protected void setType(PriceTypeEnum type) {
-        this.priceType = PriceTypeEnum.NET;
+        this.priceType = type;
     }
 
     @Override
