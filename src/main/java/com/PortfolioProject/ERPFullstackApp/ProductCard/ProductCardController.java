@@ -8,16 +8,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/productCard")
-public class ProductCardControler {
+public class ProductCardController {
 
 
     private final ProductCardService productCardService;
     @Autowired
-    public ProductCardControler(ProductCardService productCardService){
+    public ProductCardController(ProductCardService productCardService){
         this.productCardService = productCardService;
     }
 
-
+    @GetMapping
+    public String ping(){ return "ProductController responding.";}
     @GetMapping("/list")
     public  List<ProductCard> listAll() {
          return productCardService.getListOfProducts();
@@ -28,8 +29,11 @@ public class ProductCardControler {
         productCardService.addProductCard(productCard);
     }
 
-    @DeleteMapping(path = "{deleteProductCard}")
+    @DeleteMapping(path = "deleteId={deleteProductCard}")
     public void deleteProductCard(@PathVariable("deleteProductCard") Long id){ productCardService.deleteProductCard(id);}
+
+    @PutMapping("/updateProductCard")
+    public void updateProductCard(@RequestBody ProductCard productCard) { productCardService.updateProductCard(productCard.getId(),productCard.getName(), productCard.getEan(), productCard.getActive(), productCard.getUnitOfMeasurement());}
 
 
 
