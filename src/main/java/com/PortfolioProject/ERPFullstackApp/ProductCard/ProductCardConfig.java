@@ -11,7 +11,7 @@ import java.util.List;
 public class ProductCardConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(
+    CommandLineRunner commandLineRunnerProductCard(
             ProductCardRepository productCardRepository){
 //        ListOfPrices list1 = new ListOfPrices();
 //        list1.addToListOfPrices(new PriceGrossA(99.99,true ));

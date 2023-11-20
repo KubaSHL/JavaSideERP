@@ -1,10 +1,12 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors;
 
+import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Contractor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventPublicationInterceptor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/contractors")
@@ -18,8 +20,9 @@ public class ContractorsController {
     }
 
     @GetMapping("/ping")
-    public String Ping(){return "ContractorsController responding.";}
+    public String ping(){return "ContractorsController responding.";}
 
-
+    @GetMapping("/listOfAllContractors")
+    public List<Contractor> getListOfContractors(){ return contractorsService.getListOfContractors();}
 
 }
