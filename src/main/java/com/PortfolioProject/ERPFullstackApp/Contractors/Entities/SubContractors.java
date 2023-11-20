@@ -2,7 +2,7 @@ package com.PortfolioProject.ERPFullstackApp.Contractors.Entities;
 
 import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorAbstract;
 import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorInterface;
-import com.PortfolioProject.ERPFullstackApp.Contractors.Address.Address;
+import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Address.Address;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,20 +16,22 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Contractor_sequence")
     Long id;
     String name;
+    @Column(unique = true)
     String code;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "addressId", referencedColumnName = "id")
     Address address;
     @ManyToOne
-    @JoinColumn(name = "contractorId", nullable = false)
-    private Contractors masterContractor;
+    @JoinColumn(name = "masterContractorId", nullable = false)
+    private Contractor masterContractor;
 
     public SubContractors() {
     }
 
-    public SubContractors(Long id, String name, String code, Address address, Contractors masterContractor) {
-        this.id = id;
+    public SubContractors( String name, String code, Contractor masterContractor, Address address) {
         this.name = name;
         this.code = code;
-        this.address = address;
+        //this.address = address;
         this.masterContractor = masterContractor;
     }
 
@@ -37,7 +39,7 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -57,19 +59,12 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
         this.code = code;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Contractors getMasterContractor() {
+    public Contractor getMasterContractor() {
         return masterContractor;
     }
 
-    private void setMasterContractor(Contractors masterContractor) {
+    private void setMasterContractor(Contractor masterContractor) {
         this.masterContractor = masterContractor;
     }
 }

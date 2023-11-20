@@ -1,6 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.ProductCard.Entities;
 
-import com.PortfolioProject.ERPFullstackApp.ProductCard.ProductPrices.ListOfPrices;
+import com.PortfolioProject.ERPFullstackApp.ProductCard.Entities.ProductPrices.ListOfPrices;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;

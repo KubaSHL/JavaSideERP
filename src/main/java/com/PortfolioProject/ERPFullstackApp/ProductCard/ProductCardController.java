@@ -17,10 +17,10 @@ public class ProductCardController {
         this.productCardService = productCardService;
     }
 
-    @GetMapping
+    @GetMapping("/ping")
     public String ping(){ return "ProductController responding.";}
-    @GetMapping("/list")
-    public  List<ProductCard> listAll() {
+    @GetMapping("/listOfAllProductCards")
+    public  List<ProductCard> getListOfProductCards() {
          return productCardService.getListOfProducts();
     }
 
@@ -34,7 +34,5 @@ public class ProductCardController {
 
     @PutMapping("/updateProductCard")
     public void updateProductCard(@RequestBody ProductCard productCard) { productCardService.updateProductCard(productCard.getId(),productCard.getName(), productCard.getEan(), productCard.getActive(), productCard.getUnitOfMeasurement());}
-
-
 
 }

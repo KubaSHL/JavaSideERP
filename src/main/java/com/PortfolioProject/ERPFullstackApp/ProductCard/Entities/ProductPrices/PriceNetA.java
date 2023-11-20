@@ -1,4 +1,4 @@
-package com.PortfolioProject.ERPFullstackApp.ProductCard.ProductPrices;
+package com.PortfolioProject.ERPFullstackApp.ProductCard.Entities.ProductPrices;
 
 import com.PortfolioProject.ERPFullstackApp.ProductCard.Enums.PriceTypeEnum;
 import com.PortfolioProject.ERPFullstackApp.ProductCard.Abstract.PriceAbstract;
