@@ -2,6 +2,7 @@ package com.PortfolioProject.ERPFullstackApp.ProductCard;
 
 import com.PortfolioProject.ERPFullstackApp.ProductCard.Entities.ProductCard;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class ProductCardController {
 
     @GetMapping("/ping")
     public String ping(){ return "ProductController responding.";}
+
     @GetMapping("/listOfAllProductCards")
     public  List<ProductCard> getListOfProductCards() {
          return productCardService.getListOfProducts();
