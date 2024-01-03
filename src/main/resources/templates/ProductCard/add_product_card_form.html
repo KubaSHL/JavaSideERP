@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style type="text/css">
+        label {
+            display: inline-block;
+            width: 200px;
+            margin: 5px;
+            text-align: left;
+        }
+        input[type=text], input[type=password], select {
+            display: inline-block;
+            width: 200px;
+        }
+        input[type=radio] {
+            margin-left: 45px;
+        }
+        input[type=checkbox] {
+            margin-right: 190px;
+        }
+        button {
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Product Registration</title>
+</head>
+<body>
+<div align="center">
+
+    <h1>Insert product data</h1>
+    <form action="#" th:action="@{/addProductCardForm}" method="post" th:object="${productCard}">
+
+    <label>Product name:</label>
+        <input type="text" th:field="*{name}" /><br/>
+
+    <label>Product code (must be uniqe):</label>
+        <input type="text" th:field="*{code}" /><br/>
+
+    <label>EAN:</label>
+        <input type="text" th:field="*{ean}" /><br/>
+
+    <label>Unit of measurement:</label>
+        <input type="text" th:field="*{unitOfMeasurement}" /><br/>
+
+    <label>Do you want to set it as active?</label>
+        <input type="checkbox" th:field="*{active}" />Yes
+
+    <button type="submit">Insert</button>
+
+    </form>
+</div>
+</body>
+</html>

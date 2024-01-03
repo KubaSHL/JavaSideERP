@@ -31,7 +31,7 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
     public SubContractors( String name, String code, Contractor masterContractor, Address address) {
         this.name = name;
         this.code = code;
-        //this.address = address;
+        this.address = address;
         this.masterContractor = masterContractor;
     }
 

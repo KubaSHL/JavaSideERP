@@ -19,6 +19,7 @@ public class ProductCardController {
 
     @GetMapping("/ping")
     public String ping(){ return "ProductController responding.";}
+
     @GetMapping("/listOfAllProductCards")
     public  List<ProductCard> getListOfProductCards() {
          return productCardService.getListOfProducts();
