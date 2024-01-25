@@ -9,9 +9,7 @@ public class ListOfPrices {
 
     private final ArrayList<PriceInterface> listOfPrices = new ArrayList<>();
 
-    public ListOfPrices() {
-
-    }
+    public ListOfPrices() {}
 
     public ArrayList<PriceInterface> getListOfPrices() {
         return listOfPrices;

@@ -1,0 +1,25 @@
+services:
+  springerp:
+    build: .
+    ports:
+      - "8000:8080"
+  mssql:
+
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      url:
+      DatabaseName : "ERPFullstackProj"
+      encrypt: true
+      trustServerCertificate: true
+      ACCEPT_EULA: true
+      username: "sa"
+      password: "123"
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    volumes:
+      - mssql-data:/foo:rw
+    ports:
+      - "1433:1433"
+
+volumes:
+  mssql-data:
+

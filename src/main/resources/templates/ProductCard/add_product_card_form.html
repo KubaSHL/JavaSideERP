@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <style type="text/css">
-        label {
+    <style>
+        label.text {
             display: inline-block;
             width: 200px;
             margin: 5px;
             text-align: left;
+        }
+        label.checkbox{
+            display: inline-block;
+            width: 100px;
+            margin: 5px;
+            text-align: center;
         }
         input[type=text], input[type=password], select {
             display: inline-block;
@@ -16,12 +22,15 @@
             margin-left: 45px;
         }
         input[type=checkbox] {
-            margin-right: 190px;
+            margin-right: 45px;
         }
         button {
             padding: 5px;
             margin: 10px;
         }
+        .errorLocal {
+        color: red;
+    }
     </style>
     <meta charset="UTF-8">
     <title>Product Registration</title>
@@ -32,22 +41,29 @@
     <h1>Insert product data</h1>
     <form action="#" th:action="@{/addProductCardForm}" method="post" th:object="${productCard}">
 
-    <label>Product name:</label>
+    <label class="text">Product name:</label>
         <input type="text" th:field="*{name}" /><br/>
+        <p class="errorLocal" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
 
-    <label>Product code (must be uniqe):</label>
+    <label class="text">Product code (must be uniqe):</label>
         <input type="text" th:field="*{code}" /><br/>
+        <p class="errorLocal" th:if="${#fields.hasErrors('code')}" th:errors="*{code}" />
 
-    <label>EAN:</label>
+    <label class="text">EAN:</label>
         <input type="text" th:field="*{ean}" /><br/>
 
-    <label>Unit of measurement:</label>
+    <label class="text">Unit of measurement:</label>
         <input type="text" th:field="*{unitOfMeasurement}" /><br/>
 
-    <label>Do you want to set it as active?</label>
-        <input type="checkbox" th:field="*{active}" />Yes
+    <label class="text">Type of product:</label>
+        <select th:field="*{productTypeEnum}">
+            <option th:each="t : ${typesOfProduct}" th:value="${t}" th:text="${t.displayValue}" />
+        </select><br/>
 
-    <button type="submit">Insert</button>
+    <label class="checkbox">Is active?</label>
+        <input type="checkbox" th:field="*{active}" /><br/>
+
+        <button type="submit">Insert</button>
 
     </form>
 </div>
