@@ -1,25 +1,27 @@
 services:
+
   springerp:
     build: .
     ports:
       - "8000:8080"
-  mssql:
+    network_mode: "host"
 
-    image: "mcr.microsoft.com/mssql/server"
+  mssql:
+    image: mcr.microsoft.com/mssql/server
     environment:
-      url:
-      DatabaseName : "ERPFullstackProj"
+      DatabaseName: ERPFullstackProj
       encrypt: true
       trustServerCertificate: true
       ACCEPT_EULA: true
-      username: "sa"
-      password: "123"
-      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      user: sa
+      MSSQL_SA_PASSWORD: Bla12345
+      ##driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     volumes:
       - mssql-data:/foo:rw
     ports:
       - "1433:1433"
+    network_mode: host
 
-volumes:
-  mssql-data:
+##volumes:
+  ##mssql-data:
 

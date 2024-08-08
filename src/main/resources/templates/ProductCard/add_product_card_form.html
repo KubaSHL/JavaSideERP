@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script>
+    function clicked(e)
+    {
+        if(!confirm('Are you sure?')) {
+            e.preventDefault();
+        }
+    }
+</script>
 <head>
     <style>
         label.text {
@@ -42,28 +50,28 @@
     <form action="#" th:action="@{/addProductCardForm}" method="post" th:object="${productCard}">
 
     <label class="text">Product name:</label>
-        <input type="text" th:field="*{name}" /><br/>
+        <input type="text" th:field="*{name}"  id="name" placeholder="Name" /><br/>
         <p class="errorLocal" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
 
-    <label class="text">Product code (must be uniqe):</label>
-        <input type="text" th:field="*{code}" /><br/>
+    <label class="text">Product code (must be unique):</label>
+        <input type="text" th:field="*{code}" id="code" placeholder="Code" /><br/>
         <p class="errorLocal" th:if="${#fields.hasErrors('code')}" th:errors="*{code}" />
 
     <label class="text">EAN:</label>
-        <input type="text" th:field="*{ean}" /><br/>
+        <input type="text" th:field="*{ean}"  id="ean" placeholder="1234567890"/><br/>
 
     <label class="text">Unit of measurement:</label>
         <input type="text" th:field="*{unitOfMeasurement}" /><br/>
 
     <label class="text">Type of product:</label>
-        <select th:field="*{productTypeEnum}">
+        <select id="productTypeEnum" name="productTypeEnum">
             <option th:each="t : ${typesOfProduct}" th:value="${t}" th:text="${t.displayValue}" />
         </select><br/>
 
     <label class="checkbox">Is active?</label>
         <input type="checkbox" th:field="*{active}" /><br/>
 
-        <button type="submit">Insert</button>
+        <button type="submit" onclick="clicked(event)">Insert</button>
 
     </form>
 </div>

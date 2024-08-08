@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Arrays;
 import java.util.List;
@@ -23,13 +24,18 @@ public class ProductCardControllerForThyme {
         this.productCardService = productCardService;
     }
 
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
     @GetMapping("/addProductCardForm")
     public String addProductCardForm(Model model){
         ProductCard productCard = new ProductCard();
         model.addAttribute("productCard",productCard);
         List<ProductTypeEnum> listOfProductTypeEnum = Arrays.asList(ProductTypeEnum.WARE, ProductTypeEnum.SERVICE, ProductTypeEnum.DELIVERY);
         model.addAttribute("typesOfProduct", listOfProductTypeEnum);
-        return "/ProductCard/add_product_card_form";
+        return "ProductCard/add_product_card_form";
     }
 
     @PostMapping("/addProductCardForm")
@@ -45,7 +51,15 @@ public class ProductCardControllerForThyme {
         if (result.hasErrors()) {
             return "/ProductCard/add_product_card_form";
         }
-        return "/ProductCard/conformation_add_product_card";
+        return String.format("/showProductCardPage/id=%l", productCard.getId());
     }
+
+    @GetMapping(path = "/showProductCardPage/id={productCardId}")
+    public String showProductCard(@PathVariable("productCardId") Long id, Model model){
+        model.addAttribute("ProductCard",productCardService.getProductCardOfId(id));
+        return "/ProductCard/view_product_card";
+
+    }
+
 
 }

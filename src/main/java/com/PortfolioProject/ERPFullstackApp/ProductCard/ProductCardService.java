@@ -21,6 +21,8 @@ public class ProductCardService {
         return productCardRepository.findAll();
     }
 
+    public ProductCard getProductCardOfId(Long id){ return productCardRepository.getReferenceById(id);}
+
     public void addProductCard(ProductCard pc) {
         try{
         productCardRepository.save(pc);

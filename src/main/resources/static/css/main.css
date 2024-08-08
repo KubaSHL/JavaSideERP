@@ -1,0 +1,107 @@
+/* Resetowanie marginesów i wypełnienia dla wszystkich elementów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ustawienia ogólne dla ciała strony */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* bardzo jasny niebieski */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Nagłówki */
+h1, h2, h3, h4, h5, h6 {
+    color: #007acc; /* jasny niebieski */
+    margin-bottom: 10px;
+}
+
+/* Linki */
+a {
+    color: #005f99; /* ciemniejszy niebieski */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Listy */
+ul, ol {
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Tabele */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007acc;
+    color: #fff;
+}
+
+/* Formularze */
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"], button {
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #005f99;
+}
+
+/* Obrazy */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Kontenery */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sekcje */
+section {
+    margin: 20px 0;
+}
+
+/* Stopka */
+footer {
+    background-color: #007acc;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
