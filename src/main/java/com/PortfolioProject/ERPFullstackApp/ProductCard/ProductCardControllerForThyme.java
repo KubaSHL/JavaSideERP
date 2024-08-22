@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,8 +43,8 @@ public class ProductCardControllerForThyme {
     @PostMapping("/addProductCardForm")
     public String submitForm(@Valid @ModelAttribute("productCard") ProductCard productCard, BindingResult result) {
         try{
-        System.out.println(productCard);
-        productCardService.addProductCard(productCard);
+            System.out.println(productCard);
+            productCardService.addProductCard(productCard);
         }catch (Exception ex){
             ObjectError error = new ObjectError("ResponseError", ex.getMessage());
             result.addError(error);
@@ -51,7 +53,8 @@ public class ProductCardControllerForThyme {
         if (result.hasErrors()) {
             return "/ProductCard/add_product_card_form";
         }
-        return String.format("/showProductCardPage/id=%l", productCard.getId());
+
+        return"/ProductCard/view_product_card";
     }
 
     @GetMapping(path = "/showProductCardPage/id={productCardId}")

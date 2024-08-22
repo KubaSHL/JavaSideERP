@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <script>
     function clicked(e)
     {
@@ -9,6 +9,8 @@
     }
 </script>
 <head>
+    <link th:href="@{/css/main.css}" rel = "stylesheet"/>
+
     <style>
         label.text {
             display: inline-block;
@@ -40,6 +42,7 @@
         color: red;
     }
     </style>
+
     <meta charset="UTF-8">
     <title>Product Registration</title>
 </head>
@@ -64,7 +67,7 @@
         <input type="text" th:field="*{unitOfMeasurement}" /><br/>
 
     <label class="text">Type of product:</label>
-        <select id="productTypeEnum" name="productTypeEnum">
+        <select    id="productTypeEnum" name="productTypeEnum">
             <option th:each="t : ${typesOfProduct}" th:value="${t}" th:text="${t.displayValue}" />
         </select><br/>
 

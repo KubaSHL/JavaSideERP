@@ -71,6 +71,7 @@ input[type="submit"], button {
     background-color: #007acc;
     color: white;
     cursor: pointer;
+    width 100px;
 }
 
 input[type="submit"]:hover, button:hover {
@@ -104,4 +105,68 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Karta produktu*/
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    background-color: #e6f2ff; /* bardzo jasny niebieski */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #007acc; /* jasny niebieski */
+}
+
+.product-code,
+.product-name,
+.product-ean,
+.product-unit,
+.product-active,
+.product-type {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #333;
+}
+
+.product-code::before {
+    content: "Code: ";
+    color: #005f99; /* ciemniejszy niebieski */
+}
+
+.product-name::before {
+    content: "Name: ";
+    color: #005f99;
+}
+
+.product-ean::before {
+    content: "EAN: ";
+    color: #005f99;
+}
+
+.product-unit::before {
+    content: "Unit: ";
+    color: #005f99;
+}
+
+.product-active::before {
+    content: "Active: ";
+    color: #005f99;
+}
+
+.product-type::before {
+    content: "Type: ";
+    color: #005f99;
 }

@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Product Card</title>
+    <link th:href="@{/css/main.css}" rel = "stylesheet"/>
 </head>
 <body>
+<div class="product-card">
     <h1>Product card</h1>
+    <span class="product-code">name:</span><span th:text="${productCard.name}"></span><br/>
+    <span class="product-code">code:</span><span th:text="${productCard.code}"></span><br/>
+    <span class="product-card">ean:</span><span th:text="${productCard.ean}"></span><br/>
+    <span class="product-card">unit of measurement:</span><span th:text="${productCard.unitOfMeasurement}"></span><br/>
+    <span class="product-card">product type:</span><span th:text="${productCard.productTypeEnum}"></span><br/>
+    <span class="product-card">active?</span><span th:text="${productCard.active}"></span><br/>
+
+</div>
 </body>
 </html>
