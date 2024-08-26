@@ -28,7 +28,7 @@ public class ProductCardService {
         productCardRepository.save(pc);
         }
         catch(Exception ex){
-            throw new IllegalStateException("EXCEPTION THROWN:"+ex.getMessage());
+            throw new IllegalStateException("ERROR ADDING PRODUCTCARD, EXCEPTION:"+ex.getMessage());
         }
     }
 
