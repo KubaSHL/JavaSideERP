@@ -9,11 +9,11 @@ import jakarta.persistence.*;
 @Table(name = "SubContractorsList")
 public class SubContractors extends ContractorAbstract implements ContractorInterface {
     @Id
-    @SequenceGenerator(name = "Contractor_sequence",
-            sequenceName = "Contractor_sequence",
+    @SequenceGenerator(name = "subcontractor_sequence",
+            sequenceName = "subcontractor_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Contractor_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "subcontractor_sequence")
     Long id;
     String name;
     @Column(unique = true)

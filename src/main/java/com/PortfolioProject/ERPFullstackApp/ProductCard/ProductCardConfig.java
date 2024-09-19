@@ -11,7 +11,7 @@ import java.util.List;
 @Configuration
 public class ProductCardConfig {
 
-    @Bean
+    @Bean("ProductCardConfig")
     CommandLineRunner commandLineRunnerProductCard(
             ProductCardRepository productCardRepository){
 //        ListOfPrices list1 = new ListOfPrices();

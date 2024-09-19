@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class ContractorsConfig {
 
-    @Bean
+    @Bean("ContractorConfig")
     CommandLineRunner commandLineRunnerContractor(
             ContractorsRepository contractorsRepository){
         return  args -> {
