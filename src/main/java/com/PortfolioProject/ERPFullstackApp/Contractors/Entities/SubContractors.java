@@ -1,19 +1,19 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors.Entities;
 
 import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorAbstract;
-import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorInterface;
+import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.IContractor;
 import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Address.Address;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "SubContractorsList")
-public class SubContractors extends ContractorAbstract implements ContractorInterface {
+public class SubContractors extends ContractorAbstract implements IContractor {
     @Id
-    @SequenceGenerator(name = "Contractor_sequence",
-            sequenceName = "Contractor_sequence",
+    @SequenceGenerator(name = "subcontractor_sequence",
+            sequenceName = "subcontractor_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "Contractor_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "subcontractor_sequence")
     Long id;
     String name;
     @Column(unique = true)
@@ -23,12 +23,12 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
     Address address;
     @ManyToOne
     @JoinColumn(name = "masterContractorId", nullable = false)
-    private Contractor masterContractor;
+    private com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor masterContractor;
 
     public SubContractors() {
     }
 
-    public SubContractors( String name, String code, Contractor masterContractor, Address address) {
+    public SubContractors(String name, String code, com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor masterContractor, Address address) {
         this.name = name;
         this.code = code;
         this.address = address;
@@ -60,11 +60,11 @@ public class SubContractors extends ContractorAbstract implements ContractorInte
     }
 
 
-    public Contractor getMasterContractor() {
+    public com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor getMasterContractor() {
         return masterContractor;
     }
 
-    private void setMasterContractor(Contractor masterContractor) {
+    private void setMasterContractor(com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor masterContractor) {
         this.masterContractor = masterContractor;
     }
 }

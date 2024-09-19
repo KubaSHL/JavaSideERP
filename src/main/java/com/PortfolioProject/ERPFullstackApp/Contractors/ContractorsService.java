@@ -1,7 +1,7 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors;
 
 import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Address.Address;
-import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Contractor;
+import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class ContractorsService {
     }
 
 
-    public List<Contractor> getListOfContractors(){
+    public List<IContractor> getListOfContractors(){
         return contractorsRepository.findAll();
     }
 
@@ -28,7 +28,7 @@ public class ContractorsService {
         return addressRepository.findAll();
     }
 
-    public void addContractor(Contractor c){
+    public void addContractor(IContractor c){
        try{
            contractorsRepository.save(c);
        }catch(Exception ex){

@@ -1,10 +1,9 @@
 package com.PortfolioProject.ERPFullstackApp.Payment.Abstract;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Payment {
     @Id
     @SequenceGenerator(

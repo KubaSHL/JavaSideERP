@@ -1,7 +1,22 @@
-package com.PortfolioProject.ERPFullstackApp.DocumentStruct;
+package com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class DocumentPosition {
-    Long positionId;
+    @Id
+    @SequenceGenerator(
+            name = "document_position_sequence",
+            sequenceName = "document_position_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "document_position_sequence"
+    )
+    private Long positionId;
     String productCode;
     String description;
     Float priceGross;

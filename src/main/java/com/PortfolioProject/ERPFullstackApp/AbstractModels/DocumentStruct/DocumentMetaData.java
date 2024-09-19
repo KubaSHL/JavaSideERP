@@ -1,22 +1,24 @@
-package com.PortfolioProject.ERPFullstackApp.DocumentStruct;
+package com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct;
 
-import com.PortfolioProject.ERPFullstackApp.DocumentStruct.Enums.DocumentTypeEnum;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.SequenceGenerator;
+import com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct.Enums.DocumentTypeEnum;
+import jakarta.persistence.*;
 
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class DocumentMetaData {
 
+    @Id
     @SequenceGenerator(
-            name = "document_sequence",
-            sequenceName = "document_sequence",
+            name = "document_meta_sequence",
+            sequenceName = "document_meta_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "document_sequence"
+            generator = "document_meta_sequence"
     )
-    private Long docId;
+    private Long metaDocId;
     DocumentTypeEnum type;
     String createdBy;
 
@@ -29,11 +31,11 @@ public abstract class DocumentMetaData {
     }
 
     public Long getDocId() {
-        return docId;
+        return metaDocId;
     }
 
     private void setDocId(Long docId) {
-        this.docId = docId;
+        this.metaDocId = docId;
     }
 
     public DocumentTypeEnum getType() {

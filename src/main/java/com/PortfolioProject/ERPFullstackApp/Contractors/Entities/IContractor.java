@@ -1,7 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors.Entities;
 
 import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorAbstract;
-import com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.ContractorInterface;
 import jakarta.persistence.*;
 
 import java.util.Arrays;
@@ -9,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ContractorsList")
-public class Contractor extends ContractorAbstract implements ContractorInterface  {
+public class IContractor extends ContractorAbstract implements com.PortfolioProject.ERPFullstackApp.Contractors.Abstract.IContractor {
 
     @Id
     @SequenceGenerator(name = "Contractor_sequence",
@@ -27,13 +26,13 @@ public class Contractor extends ContractorAbstract implements ContractorInterfac
     @OneToMany(targetEntity = SubContractors.class, cascade = {CascadeType.ALL}, mappedBy = "masterContractor")
     public List<SubContractors> subContractors;
 
-    public Contractor(String name, String nip) {
+    public IContractor(String name, String nip) {
         this.name = name;
         this.code = Arrays.toString(name.getBytes()) ;
         this.nip = nip;
     }
 
-    public Contractor() {
+    public IContractor() {
     }
 
     public Long getId() {

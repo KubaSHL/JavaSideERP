@@ -1,6 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors;
 
-import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Contractor;
+import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +21,11 @@ public class ContractorsController {
     public String ping(){return "ContractorsController responding.";}
 
     @GetMapping("/listOfAllContractors")
-    public List<Contractor> getListOfContractors(){ return contractorsService.getListOfContractors();}
+    public List<IContractor> getListOfContractors(){ return contractorsService.getListOfContractors();}
 
     @PostMapping("/addContractor")
-    public void addContractor(@RequestBody Contractor contractor){
-        contractorsService.addContractor(new Contractor(contractor.name, contractor.nip));
+    public void addContractor(@RequestBody IContractor contractor){
+        contractorsService.addContractor(new IContractor(contractor.name, contractor.nip));
     }
 
 }

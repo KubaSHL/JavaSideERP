@@ -1,15 +1,29 @@
-package com.PortfolioProject.ERPFullstackApp.DocumentStruct;
+package com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct;
 
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
-import java.util.List;
 
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Document {
-    @OneToOne
+
+    @Id
+    @SequenceGenerator(
+            name = "document_sequence",
+            sequenceName = "document_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "document_sequence"
+    )
+    private Long mainId;
+
+    @OneToOne(cascade = CascadeType.ALL)
     DocumentMetaData documentMetaData;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     DocumentHeader documentHeader;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     DocumentBody documentBody;
 
     public Document() {
@@ -21,6 +35,13 @@ public abstract class Document {
         this.documentBody = documentBody;
     }
 
+    public Long getMainId() {
+        return mainId;
+    }
+
+    private void setMainId(Long mainId) {
+        this.mainId = mainId;
+    }
 
     public DocumentMetaData getDocumentMetaData() {
         return documentMetaData;

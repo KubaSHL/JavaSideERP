@@ -1,6 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.Contractors;
 
-import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.Contractor;
+import com.PortfolioProject.ERPFullstackApp.Contractors.Entities.IContractor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,12 +9,12 @@ import java.util.List;
 @Configuration
 public class ContractorsConfig {
 
-    @Bean
+    @Bean("ContractorConfig")
     CommandLineRunner commandLineRunnerContractor(
             ContractorsRepository contractorsRepository){
         return  args -> {
-            Contractor c1 = new Contractor("testName1",  "9018293801" );
-            Contractor  c2 = new Contractor("testName2",  "88432051");
+            IContractor c1 = new IContractor("testName1",  "9018293801" );
+            IContractor c2 = new IContractor("testName2",  "88432051");
             contractorsRepository.saveAll(List.of(c1,c2));
         };
     }
