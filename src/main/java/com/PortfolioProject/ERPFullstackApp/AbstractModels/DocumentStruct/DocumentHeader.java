@@ -23,20 +23,18 @@ public abstract class  DocumentHeader {
     )
     private Long docHeadId;
     @OneToOne(cascade = CascadeType.PERSIST)
-    public IContractor contractor;
-    Date date;
-    Date dueTo;
-    @OneToOne(cascade = CascadeType.PERSIST)
-    Payment payment;
+    private IContractor contractor;
+    private Date date;
+    private Date dueTo;
+
 
     public DocumentHeader() {
     }
 
-    public DocumentHeader(IContractor contractor, Date date, Date dueTo, Payment payment) {
+    public DocumentHeader(IContractor contractor, Date date, Date dueTo) {
         this.contractor = contractor;
         this.date = date;
         this.dueTo = dueTo;
-        this.payment = payment;
     }
 
     public Long getDocHeadId() {
@@ -71,11 +69,4 @@ public abstract class  DocumentHeader {
         this.dueTo = dueTo;
     }
 
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
 }

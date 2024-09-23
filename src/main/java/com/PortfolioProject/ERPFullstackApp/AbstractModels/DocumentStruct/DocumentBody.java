@@ -1,5 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public abstract class DocumentBody {
     private Long parentBodyId;
     private Double discount;
     @OneToMany(cascade = CascadeType.MERGE)
-    List<DocumentPosition> documentPositionList;
+    private List<DocumentPosition> documentPositionList;
 
     public DocumentBody() {
     }
@@ -53,5 +54,13 @@ public abstract class DocumentBody {
 
     public void setDiscount(Double discount) {
         this.discount = discount;
+    }
+
+    public List<DocumentPosition> getDocumentPositionList() {
+        return documentPositionList;
+    }
+
+    public void setDocumentPositionList(List<DocumentPosition> documentPositionList) {
+        this.documentPositionList = documentPositionList;
     }
 }

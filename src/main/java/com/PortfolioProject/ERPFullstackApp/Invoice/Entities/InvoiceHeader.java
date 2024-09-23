@@ -10,10 +10,22 @@ import java.util.Date;
 @Table(name = "invoice_headers_list")
 public class InvoiceHeader extends DocumentHeader {
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Payment payment;
+
     public InvoiceHeader() {
     }
 
     public InvoiceHeader(IContractor contractor, Date date, Date dueTo, Payment payment) {
-        super(contractor, date, dueTo, payment);
+        super(contractor, date, dueTo);
+        this.payment = payment;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

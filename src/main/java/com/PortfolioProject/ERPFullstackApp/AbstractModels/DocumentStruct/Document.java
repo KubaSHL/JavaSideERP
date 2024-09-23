@@ -20,11 +20,11 @@ public abstract class Document {
     private Long mainId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    DocumentMetaData documentMetaData;
+    private DocumentMetaData documentMetaData;
     @OneToOne(cascade = CascadeType.ALL)
-    DocumentHeader documentHeader;
+    private DocumentHeader documentHeader;
     @OneToOne(cascade = CascadeType.ALL)
-    DocumentBody documentBody;
+    private DocumentBody documentBody;
 
     public Document() {
     }

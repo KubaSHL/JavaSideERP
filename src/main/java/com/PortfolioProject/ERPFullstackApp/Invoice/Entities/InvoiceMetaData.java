@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 @Table(name = "invoice_meta_data_list")
 public class InvoiceMetaData extends DocumentMetaData {
 
-
     public InvoiceMetaData() {
     }
 

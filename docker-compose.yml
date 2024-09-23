@@ -3,25 +3,27 @@ services:
   springerp:
     build: .
     ports:
-      - "8000:8080"
-    network_mode: "host"
+      - "8080:8080"
+    network_mode: host
+    depends_on:
+      mssql:
+        condition: service_healthy
 
   mssql:
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    build: ./DbConfig
     environment:
       DatabaseName: ERPFullstackProj
       encrypt: true
       trustServerCertificate: true
       ACCEPT_EULA: true
-      user: sa
       MSSQL_SA_PASSWORD: Bla12345
-      ##driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    volumes:
-      - mssql-data:/foo:rw
     ports:
       - "1433:1433"
     network_mode: host
-
-##volumes:
-  ##mssql-data:
-
+    healthcheck:
+      test: [ "CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Bla12345", "-C","-N", "-Q", "SELECT 1 GO"]
+      start_period: 25s
+      interval: 15s
+      timeout: 10s
+      retries: 5

@@ -1,5 +1,6 @@
 package com.PortfolioProject.ERPFullstackApp.AbstractModels.DocumentStruct;
 
+import com.PortfolioProject.ERPFullstackApp.ProductCard.Entities.ProductCard;
 import jakarta.persistence.*;
 
 
@@ -17,11 +18,13 @@ public abstract class DocumentPosition {
             generator = "document_position_sequence"
     )
     private Long positionId;
-    String productCode;
-    String description;
-    Float priceGross;
-    Float priceNet;
-    Integer vat;
+    @OneToOne(targetEntity = ProductCard.class, cascade = CascadeType.MERGE)
+    private Long productCardId;
+    private String productCode;
+    private String description;
+    private Float priceGross;
+    private Float priceNet;
+    private Integer vat;
 
     public DocumentPosition() {
     }
@@ -41,6 +44,14 @@ public abstract class DocumentPosition {
 
     private void setPositionId(Long positionId) {
         this.positionId = positionId;
+    }
+
+    public Long getProductCardId() {
+        return productCardId;
+    }
+
+    public void setProductCardId(Long productCardId) {
+        this.productCardId = productCardId;
     }
 
     public String getProductCode() {

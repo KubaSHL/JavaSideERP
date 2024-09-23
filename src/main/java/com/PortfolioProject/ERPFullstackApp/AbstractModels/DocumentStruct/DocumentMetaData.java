@@ -19,8 +19,8 @@ public abstract class DocumentMetaData {
             generator = "document_meta_sequence"
     )
     private Long metaDocId;
-    DocumentTypeEnum type;
-    String createdBy;
+    private DocumentTypeEnum type;
+    private String createdBy;
 
     public DocumentMetaData() {
     }
